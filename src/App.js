@@ -68,7 +68,6 @@ import "./styles.css";
 // };
 
 const User = ({ closeModal }) => {
-  // ... existing code ...
 
   // Function to validate email
   const validateEmail = (email) => {
@@ -88,7 +87,6 @@ const User = ({ closeModal }) => {
     return birthDate < today;
   };
 
-  // Updated handleSubmit function
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -115,9 +113,14 @@ const User = ({ closeModal }) => {
     closeModal(true);
   };
 
-  // ... rest of the User component ...
+  const handleOutsideClick = (event) => {
+    if (event.target.className === "modal") {
+      closeModal();
+    }
+  };
+
   return (
-    <div className="modal">
+    <div className="modal" onClick={handleOutsideClick}>
       <div className="modal-content">
         <h2>Fill Details</h2>
         <form onSubmit={handleSubmit}>
